@@ -1,0 +1,85 @@
+{
+  "name": "react-native-cross-maps",
+  "version": "0.1.0",
+  "description": "Beautiful React-Native components using RN Paper by Callstack",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "dev": "yarn install-globals && yarn lint",
+    "install-globals": "yarn global add typescript tslint prettier codecov",
+    "lint": "./scripts/lint.sh",
+    "git-add": "git add -A",
+    "read-sh": "sudo find . -name \"*.sh\" | xargs chmod u+x",
+    "build": "tsc -p ./tsconfig.json",
+    "build-watch": "tsc -p ./tsconfig.json --watch",
+    "test": "node node_modules/jest/bin/jest.js --ci",
+    "test-watch": "node node_modules/jest/bin/jest.js --watchAll -u",
+    "test-watch-fast": "node node_modules/jest/bin/jest.js --watchAll -u --collectCoverage=false",
+    "test-lint-build": "yarn test && yarn lint && yarn build && yarn docs && yarn gh-pages",
+    "npm-version": "./scripts/npm-version.sh",
+    "docs": "yarn generate-docs && yarn gh-pages",
+    "generate-docs": "./scripts/docs.sh",
+    "gh-pages": "NODE_DEBUG=gh-pages && yarn gh-clean && gh-pages --dotfiles -d docs",
+    "gh-clean": "node ./node_modules/gh-pages/bin/gh-pages-clean.js",
+    "preversion": "yarn lint && yarn test",
+    "version": "yarn build && git add -A source",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crossplatformsweden/react-native-core.git"
+  },
+  "keywords": [
+    "react-native",
+    "typescript",
+    "components",
+    "react-native-paper"
+  ],
+  "author": "carlgrimsborn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crossplatformsweden/react-native-core/issues"
+  },
+  "homepage": "https://github.com/crossplatformsweden/react-native-core#readme",
+  "devDependencies": {
+    "@babel/runtime": "^7.1.5",
+    "@types/es6-promise": "^3.3.0",
+    "@types/jest": "^23.3.2",
+    "@types/lodash": "^4.14.118",
+    "@types/react": "^16.4.14",
+    "@types/react-native": "^0.56.21",
+    "@types/react-native-indicators": "^0.13.1",
+    "@types/react-native-vector-icons": "^4.6.3",
+    "@types/react-test-renderer": "^16.0.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "gh-pages": "^2.0.1",
+    "husky": "1.0.0-rc.13",
+    "jest": "23.6.0",
+    "lodash": "^4.17.11",
+    "prettier": "^1.14.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.5.2",
+    "react-native": "^0.57.5",
+    "react-native-typescript-transformer": "^1.2.10",
+    "react-test-renderer": "^16.5.2",
+    "ts-jest": "^23.1.4",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.0",
+    "tslint-react": "^3.6.0",
+    "typedoc": "https://github.com/TypeStrong/typedoc",
+    "typescript": "^3.1.6"
+  },
+  "peerDependencies": {
+    "react-native-maps": "~0.21.X",
+    "react-native-maps-directions": "~1.6.X"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn build && yarn test"
+    }
+  },
+  "dependencies": {}
+}
