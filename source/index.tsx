@@ -1,4 +1,3 @@
+import MapComponent from './components/map/MapComponent';
 
-export {
-// TODO: MapComponent, props interface
-};
+export { MapComponent };
