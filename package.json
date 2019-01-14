@@ -1,7 +1,7 @@
 {
   "name": "react-native-cross-maps",
-  "version": "0.1.0",
-  "description": "Beautiful React-Native components using RN Paper by Callstack",
+  "version": "0.1.1",
+  "description": " A beautiful React-Native map using react-native-maps",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
