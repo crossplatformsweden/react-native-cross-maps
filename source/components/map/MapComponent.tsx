@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import * as types from '../../types';
 import LocationService from '../../services/location-service/LocationService';
-import MapService from '../../services/map-service/MapService';
+import * as MapService from '../../services/map-service/MapService';
 import { ILatLng } from '../../types';
 // @ts-ignore
 import MapViewDirections from 'react-native-maps-directions';
@@ -22,12 +22,13 @@ interface IState {
 interface IProps {
   mapViewProps?: MapViewProps;
   mapNavigationProps?: MapViewDirectionsProps;
-  goToLocation?(newLocation: types.ILatLng): void;
   initialRegion?: IRegion;
-  onRegionChange?: (newRegion: IRegion) => void;
-  onUserLocationChanged?: (newLocation: ILatLng) => void;
   destination?: ILatLng | null;
   apikey?: string;
+  userLocationButton?: boolean;
+  goToLocation?(newLocation: types.ILatLng): void;
+  onRegionChange?: (newRegion: IRegion) => void;
+  onUserLocationChanged?: (newLocation: ILatLng) => void;
 }
 
 let map: any;
@@ -143,7 +144,9 @@ export class MapComponent extends React.Component<IProps, IState> {
           ) : null}
           {this.props.children}
         </MapView>
-        <UserLocationButton onPress={this.goToUserLocation} />
+        {this.props.userLocationButton ? (
+          <UserLocationButton onPress={this.goToUserLocation} />
+        ) : null}
       </View>
     );
   }

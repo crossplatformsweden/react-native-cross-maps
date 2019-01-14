@@ -21,9 +21,9 @@
     "generate-docs": "./scripts/docs.sh",
     "gh-pages": "NODE_DEBUG=gh-pages && yarn gh-clean && gh-pages --dotfiles -d docs",
     "gh-clean": "node ./node_modules/gh-pages/bin/gh-pages-clean.js",
+    "postversion": "git push && git push --tags",
     "preversion": "yarn lint && yarn test",
-    "version": "yarn build && git add -A source",
-    "postversion": "git push && git push --tags"
+    "version": "yarn build && git add -A source"
   },
   "repository": {
     "type": "git",

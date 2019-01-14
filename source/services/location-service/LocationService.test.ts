@@ -28,4 +28,11 @@ describe('services', () => {
   it('getCurrentLocation returns true', () => {
     expect(LocationService.getCurrentLocation()).toBeTruthy();
   });
+
+  // it('watchLocation', () => {
+  //   const func = jest.fn();
+  //   const watchLocation = LocationService.watchLocation(func);
+
+  //   expect(watchLocation).toBeTruthy();
+  // });
 });

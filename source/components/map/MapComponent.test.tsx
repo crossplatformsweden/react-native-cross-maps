@@ -5,6 +5,11 @@ import { ILatLng } from '../../types';
 
 jest.unmock('react-native');
 
+const coords = {
+  latitude: 1,
+  longitude: 0,
+};
+
 // Default export requires this type of mocking
 jest.mock('react-native-maps', () => ({
   __esModule: true,
@@ -54,6 +59,13 @@ describe('components', () => {
     it('api key', () => {
       const wrapper = TestRenderer.create(<MapComponent apikey="1234" />);
       expect(wrapper.root.instance.props.apikey).toBe('1234');
+    });
+
+    it('destination prop can be inserted by user', () => {
+      const wrapper = TestRenderer.create(
+        <MapComponent destination={coords} />
+      );
+      expect(wrapper.root.instance.props.destination).toBe(coords);
     });
 
     // it('onRegionChange is called', () => {

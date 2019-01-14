@@ -1,13 +1,28 @@
-import MapService from './MapService';
+import * as MapService from './MapService';
 
 const mapMock = {
-  animateToViewingAngle: (angle : number) => angle * 2,
-  animateToBearing: (angle : number) => angle * 3,
+  animateToViewingAngle: (angle: number) => angle * 2,
+  animateToBearing: (angle: number) => angle * 3,
   animateToCoordinate: () => true,
   fitToCoordinates: () => true,
   goToCoordinate: () => true,
   animateToRegion: () => true,
 };
+
+// Default export requires this type of mocking
+jest.mock('react-native-maps', () => ({
+  __esModule: true,
+  MapView: 'View',
+  Marker: 'View',
+  Callout: 'View',
+  Ploygon: 'View',
+  Polyline: 'View',
+  Circle: 'View',
+  Overlay: 'View',
+  PROVIDER_GOOGLE: '',
+  MarkerAnimated: 'View',
+  default: 'View',
+}));
 
 describe('services', () => {
   describe('MapService', () => {
@@ -30,13 +45,9 @@ describe('services', () => {
       ).toBeTruthy();
     });
 
-    it(
-      'goToUserLocation returns true',
-      () => {
-        // @ts-ignore
-        MapService.goToUserLocation(mapMock, { latitude: 1, longitude: 2 });
-      },
-      300
-    );
+    it('goToUserLocation returns true', () => {
+      // @ts-ignore
+      MapService.goToUserLocation(mapMock, { latitude: 1, longitude: 2 });
+    }, 300);
   });
 });

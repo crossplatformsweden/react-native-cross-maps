@@ -27,24 +27,5 @@ exports[`components <MapComponent /> renders correctly with defaults 1`] = `
     toolbarEnabled={false}
     zoomEnabled={true}
   />
-  <View
-    style={
-      Array [
-        undefined,
-        Object {
-          "right": 0,
-          "top": 20,
-        },
-      ]
-    }
-  >
-    <Button
-      backgroundColor="transparent"
-      color="#2f2f2f"
-      iconName="dot-circle-o"
-      onPress={[Function]}
-      size={40}
-    />
-  </View>
 </View>
 `;
